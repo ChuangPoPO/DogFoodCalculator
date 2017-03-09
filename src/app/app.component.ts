@@ -36,11 +36,11 @@ export class AppComponent {
     //  console.log("todayDay : " + this.todayDay);
 
      let bJDN:number = this.julianDayNumber(this.year, this.month, this.day);
-     let tJDN:number = this.julianDayNumber(this.today.getFullYear(), this.today.getMonth(), this.today.getDay());
+     let tJDN:number = this.julianDayNumber(this.today.getFullYear(), (this.today.getMonth()+1) , this.today.getDate());
      
      console.log("todayYear : " + this.today.getFullYear());
-     console.log("todayMonth : " + this.today.getMonth());
-     console.log("todayDay : " + this.today.getDay());
+     console.log("todayMonth : " + (this.today.getMonth()+1));
+     console.log("todayDay : " + this.today.getDate());
      
      console.log("bJDN : " + bJDN);
      console.log("tJDN : " + tJDN);
