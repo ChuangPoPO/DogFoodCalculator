@@ -15,6 +15,8 @@ export class AppComponent {
   month:number = 1;
   day:number = 3;
   today = new Date();
+
+  clickMessage:string = '';
   // todayYear = new Date().toISOString().slice(0,4).valueOf();//(0,10)
   //birthday:TheDate = new TheDate();
 
@@ -29,7 +31,9 @@ export class AppComponent {
 
      let spoonTotal:number = this.caculateSpoon(this.kg, stage);
      
-     let spoonNum:number = ((spoonTotal * 8 * 30 )/ 4 )/ 15;
+     let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
+     
+     this.clickMessage = '目前每餐餵'+ spoonNum + '湯匙 (一湯匙 15ml)';
      
      console.log("birthStage = " + birthStage);
      console.log("weightStage = " + weightStage);
@@ -91,12 +95,13 @@ export class AppComponent {
     let a3 = FEEDS[stage]["a3"];
     let a4 = FEEDS[stage]["a4"];
     
+    console.log("KG = " + kg);
     console.log("a1 : " + a1);
     console.log("a2 : " + a2);
     console.log("a3 : " + a3);
     console.log("a4 : " + a4);
 
-    return (a1 + ( (kg - a2) * a3 ) ) / a4;
+    return a1 + (kg - a2) * a3 / a4;
   }
 
 }
