@@ -29,20 +29,21 @@ export class AppComponent {
      let weightStage:number = this.whichWeightStage(this.kg);
      let stage:number = 5 * birthStage + weightStage;
 
-     let spoonTotal:number = this.caculateSpoon(this.kg, stage);
-     
-     let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
-     
-     this.clickMessage = '目前每餐餵'+ spoonNum + '湯匙 (一湯匙 15ml)';
-     
      console.log("birthStage = " + birthStage);
      console.log("weightStage = " + weightStage);
 
      console.log("Stage = " + stage);
      
-     console.log("spoonTotal = " + spoonTotal);
-     console.log("Spoon = " + spoonNum);
-    
+     if(birthStage < 3 && weightStage < 5){
+       let spoonTotal:number = this.caculateSpoon(this.kg, stage);
+       let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
+       this.clickMessage = '目前每餐餵 '+ spoonNum + ' 湯匙 (一湯匙 15ml)';
+     }else{
+       this.clickMessage = '您的狗狗不適用此飼料';
+     }
+     
+    //  console.log("spoonTotal = " + spoonTotal);
+    //  console.log("Spoon = " + spoonNum);
     //  console.log("bJDN : " + bJDN);
     //  console.log("tJDN : " + tJDN);
     //  console.log("Stage : " + birthStage);
