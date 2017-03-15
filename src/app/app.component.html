@@ -21,9 +21,10 @@
 
     確認無誤請送出資料
     <button (click)="onClickSubmit()" >送出</button>
-    <hr />
   </div>
+</div>
 
+<div *ngIf = "clickMessage" class="page">
 
   <div class="output-data">
     <br/>
@@ -45,5 +46,6 @@
     <br/>
     <hr/>
   </div>
+  
 </div>  
 <!--</div>-->
