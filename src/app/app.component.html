@@ -1,0 +1,51 @@
+<!--<div class="app-component">-->
+  <h1 class="title">
+    {{title}}
+  </h1>
+
+<div class="page">
+  <div class = "input-data">
+    
+    請輸入資料：<br/>
+    狗狗目前 <input type="number" placeholder="可以至小數點第一位" min=0.9 max=22.6 [(ngModel)]="kg" /> 公斤<br/>
+    
+    <span>狗狗生日</span>
+    西元 <input type="number" min=1989 max=2017 [(ngModel)]="year"/> 年
+    <input type="number" min="1" max="12" [(ngModel)]="month"/> 月
+    <input type="number" min="1" max="31" [(ngModel)]="day"/> 日
+    
+    <br/>  <br/>
+    您所輸入的資料如下<br/>
+    公斤數：{{kg}} <br/>
+    生日：{{year}}年{{month}}月{{day}}日<br/><br/>
+
+    確認無誤請送出資料
+    <button (click)="onClickSubmit()" >送出</button>
+  </div>
+</div>
+
+<div *ngIf = "clickMessage" class="page">
+
+  <div class="output-data">
+    <br/>
+    {{clickMessage}}
+    <br/>
+    <br/>
+    <hr/>
+    <!--<br/>
+    狗狗生日{{birthday | date}}
+    目前每餐餵 {{spoonNum}} 湯匙<br/>
+    (一湯匙15ml)<br/>-->
+  </div>
+
+
+  <div class="memo">
+    <br/>
+    公式：(公斤及歲數對應的數量(湯匙/oz)*8oz*30ml/4(餐))/15ml(一湯匙的量)
+    <br/>
+    <br/>
+    <hr/>
+  </div>
+  
+</div>  
+<!--</div>-->
