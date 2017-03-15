@@ -11,6 +11,7 @@ import { FEEDS } from './dog-data-structure';
 export class AppComponent {
   title = 'Dog Food Calculator';
   kg:number;
+  lb:number;
   year:number = 2017;
   month:number = 1;
   day:number = 3;
@@ -26,7 +27,11 @@ export class AppComponent {
      let tJDN:number = this.julianDayNumber(this.today.getFullYear(), (this.today.getMonth()+1) , this.today.getDate());
      
      let birthStage:number = this.whichBirthStage(bJDN, tJDN);
-     let weightStage:number = this.whichWeightStage(this.kg);
+     
+     this.lb = this.kg * 2.204623;
+     console.log("LB: " + this.lb);
+
+     let weightStage:number = this.whichWeightStage(this.lb);
      let stage:number = 5 * birthStage + weightStage;
 
      console.log("birthStage = " + birthStage);
@@ -35,9 +40,9 @@ export class AppComponent {
      console.log("Stage = " + stage);
      
      if(birthStage < 3 && weightStage < 5){
-       let spoonTotal:number = this.caculateSpoon(this.kg, stage);
+       let spoonTotal:number = this.caculateSpoon(this.lb, stage);
        let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
-       this.clickMessage = '目前每餐餵 '+ spoonNum + ' 湯匙 (一湯匙 15ml)';
+       this.clickMessage = '目前每餐餵 '+ spoonNum.toPrecision(2) + ' 湯匙 (一湯匙 15ml)';
      }else{
        this.clickMessage = '您的狗狗不適用此飼料';
      }
@@ -72,23 +77,23 @@ export class AppComponent {
     }
   }
 
-  private whichWeightStage(kg:number):number{
-    if(kg>=0.9 && kg<=4.9){
+  private whichWeightStage(lb:number):number{
+    if(lb>=2 && lb<11){
       return 0;
-    }else if(kg>=5 && kg<=9.4){
+    }else if(lb>=11 && lb<21){
       return 1;
-    }else if(kg>=9.5 && kg<=13.9){
+    }else if(lb>=21 && lb<31){
       return 2;
-    }else if(kg>=14 && kg<=18.5){
+    }else if(lb>=31 && lb<41){
       return 3;
-    }else if(kg>=18.6 && kg<=22.7){
+    }else if(lb>=41 && lb<51){
       return 4;
     }else{
       return 10;
     }
   }
 
-  private caculateSpoon(kg:number, stage:number): number { //,today:Date
+  private caculateSpoon(lb:number, stage:number): number { //,today:Date
     let spoon:number = 0;
 
     let a1 = FEEDS[stage]["a1"];
@@ -96,13 +101,13 @@ export class AppComponent {
     let a3 = FEEDS[stage]["a3"];
     let a4 = FEEDS[stage]["a4"];
     
-    console.log("KG = " + kg);
+    console.log("LB = " + lb);
     console.log("a1 : " + a1);
     console.log("a2 : " + a2);
     console.log("a3 : " + a3);
     console.log("a4 : " + a4);
 
-    return a1 + (kg - a2) * a3 / a4;
+    return a1 + (lb - a2) * a3 / a4;
   }
 
 }
