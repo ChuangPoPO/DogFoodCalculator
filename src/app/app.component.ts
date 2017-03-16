@@ -42,7 +42,7 @@ export class AppComponent {
      if(birthStage < 3 && weightStage < 5){
        let spoonTotal:number = this.caculateSpoon(this.lb, stage);
        let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
-       this.clickMessage = '目前每餐餵 '+ spoonNum.toPrecision(2) + ' 湯匙 (一湯匙 15ml)';
+       this.clickMessage = '每餐  '+ spoonNum.toPrecision(2) + '  湯匙';
      }else{
        this.clickMessage = '您的狗狗不適用此飼料';
      }
