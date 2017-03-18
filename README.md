@@ -26,6 +26,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+---
 
 # Deploying a subfolder to GitHub Pages
 
@@ -35,7 +36,18 @@ For the sake of this example, let’s pretend the subfolder containing your site
 
 ### Step 1
 
-Remove the `dist` directory from the project’s `.gitignore` file (it’s ignored by default by Yeoman).
+Remove the `dist` directory from the project’s `.gitignore` file 
+(it’s ignored by default by Yeoman).
+
+執行 sh 檔
+方法1:
+```sh
+sh 檔名
+```
+方法2:
+```
+.\檔名
+```
 
 ### Step 2
 

@@ -1,0 +1,1 @@
+ng build --prod --base-href "https://chuangpopo.github.io/DogFoodCalculator/"
