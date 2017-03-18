@@ -69,15 +69,17 @@ var AppComponent = (function () {
         var bJDN = this.julianDayNumber(this.year, this.month, this.day);
         var tJDN = this.julianDayNumber(this.today.getFullYear(), (this.today.getMonth() + 1), this.today.getDate());
         var birthStage = this.whichBirthStage(bJDN, tJDN);
-        var weightStage = this.whichWeightStage(this.kg);
+        this.lb = this.kg * 2.204623;
+        console.log("LB: " + this.lb);
+        var weightStage = this.whichWeightStage(this.lb);
         var stage = 5 * birthStage + weightStage;
         console.log("birthStage = " + birthStage);
         console.log("weightStage = " + weightStage);
         console.log("Stage = " + stage);
         if (birthStage < 3 && weightStage < 5) {
-            var spoonTotal = this.caculateSpoon(this.kg, stage);
+            var spoonTotal = this.caculateSpoon(this.lb, stage);
             var spoonNum = spoonTotal * 8 * 30 / 4 / 15;
-            this.clickMessage = '目前每餐餵 ' + spoonNum + ' 湯匙 (一湯匙 15ml)';
+            this.clickMessage = '每餐  ' + spoonNum.toPrecision(2) + '  湯匙';
         }
         else {
             this.clickMessage = '您的狗狗不適用此飼料';
@@ -111,38 +113,38 @@ var AppComponent = (function () {
             return 10;
         }
     };
-    AppComponent.prototype.whichWeightStage = function (kg) {
-        if (kg >= 0.9 && kg <= 4.9) {
+    AppComponent.prototype.whichWeightStage = function (lb) {
+        if (lb >= 2 && lb < 11) {
             return 0;
         }
-        else if (kg >= 5 && kg <= 9.4) {
+        else if (lb >= 11 && lb < 21) {
             return 1;
         }
-        else if (kg >= 9.5 && kg <= 13.9) {
+        else if (lb >= 21 && lb < 31) {
             return 2;
         }
-        else if (kg >= 14 && kg <= 18.5) {
+        else if (lb >= 31 && lb < 41) {
             return 3;
         }
-        else if (kg >= 18.6 && kg <= 22.7) {
+        else if (lb >= 41 && lb < 51) {
             return 4;
         }
         else {
             return 10;
         }
     };
-    AppComponent.prototype.caculateSpoon = function (kg, stage) {
+    AppComponent.prototype.caculateSpoon = function (lb, stage) {
         var spoon = 0;
         var a1 = __WEBPACK_IMPORTED_MODULE_1__dog_data_structure__["a" /* FEEDS */][stage]["a1"];
         var a2 = __WEBPACK_IMPORTED_MODULE_1__dog_data_structure__["a" /* FEEDS */][stage]["a2"];
         var a3 = __WEBPACK_IMPORTED_MODULE_1__dog_data_structure__["a" /* FEEDS */][stage]["a3"];
         var a4 = __WEBPACK_IMPORTED_MODULE_1__dog_data_structure__["a" /* FEEDS */][stage]["a4"];
-        console.log("KG = " + kg);
+        console.log("LB = " + lb);
         console.log("a1 : " + a1);
         console.log("a2 : " + a2);
         console.log("a3 : " + a3);
         console.log("a4 : " + a4);
-        return a1 + (kg - a2) * a3 / a4;
+        return a1 + (lb - a2) * a3 / a4;
     };
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Component */])({
@@ -218,21 +220,21 @@ var TheDate = (function () {
     return TheDate;
 }());
 var FEEDS = [
-    { "a1": 0.25, "a2": 0.9, "a3": 1.25, "a4": 4 },
-    { "a1": 1.5, "a2": 5, "a3": 1, "a4": 4.4 },
-    { "a1": 2.5, "a2": 9.5, "a3": 1, "a4": 4.4 },
-    { "a1": 3.5, "a2": 14, "a3": 1, "a4": 4.5 },
-    { "a1": 4.5, "a2": 18.6, "a3": 0.75, "a4": 4.08 },
-    { "a1": 0.25, "a2": 0.9, "a3": 1, "a4": 4 },
-    { "a1": 1.25, "a2": 5, "a3": 1, "a4": 4.4 },
-    { "a1": 2.25, "a2": 9.5, "a3": 0.75, "a4": 4.4 },
-    { "a1": 3, "a2": 14, "a3": 0.75, "a4": 4.5 },
-    { "a1": 3.75, "a2": 18.6, "a3": 0.5, "a4": 4.08 },
-    { "a1": 0.25, "a2": 0.9, "a3": 0.75, "a4": 4 },
-    { "a1": 1, "a2": 5, "a3": 0.75, "a4": 4.4 },
-    { "a1": 1.75, "a2": 9.5, "a3": 0.75, "a4": 4.4 },
-    { "a1": 2.5, "a2": 14, "a3": 0.5, "a4": 4.5 },
-    { "a1": 3, "a2": 18.6, "a3": 0.5, "a4": 4.08 }
+    { "a1": 0.25, "a2": 2, "a3": 1.25, "a4": 8 },
+    { "a1": 1.5, "a2": 11, "a3": 1, "a4": 9 },
+    { "a1": 2.5, "a2": 21, "a3": 1, "a4": 9 },
+    { "a1": 3.5, "a2": 31, "a3": 1, "a4": 9 },
+    { "a1": 4.5, "a2": 41, "a3": 0.75, "a4": 9 },
+    { "a1": 0.25, "a2": 2, "a3": 1, "a4": 8 },
+    { "a1": 1.25, "a2": 11, "a3": 1, "a4": 9 },
+    { "a1": 2.25, "a2": 21, "a3": 0.75, "a4": 9 },
+    { "a1": 3, "a2": 31, "a3": 0.75, "a4": 9 },
+    { "a1": 3.75, "a2": 41, "a3": 0.5, "a4": 9 },
+    { "a1": 0.25, "a2": 2, "a3": 0.75, "a4": 8 },
+    { "a1": 1, "a2": 11, "a3": 0.75, "a4": 9 },
+    { "a1": 1.75, "a2": 21, "a3": 0.75, "a4": 9 },
+    { "a1": 2.5, "a2": 31, "a3": 0.5, "a4": 9 },
+    { "a1": 3, "a2": 41, "a3": 0.5, "a4": 9 }
 ];
 //# sourceMappingURL=dog-data-structure.js.map
 
@@ -262,7 +264,7 @@ exports = module.exports = __webpack_require__(189)();
 
 
 // module
-exports.push([module.i, "/*app-root{\r\n    width: 50%;\r\n    max-width: 800px;\r\n    background-color:  #e6ffcc;\r\n}*/\r\n.title{\r\n    background-color: rgba(77,77,77,0.8);\r\n    color: #ccff99;\r\n    font-weight: 900;\r\n    max-width: 600px;\r\n    padding: 20px 40px;\r\n\r\n    border-radius: 10px;\r\n    box-shadow:  0px 0px 10px rgba(0,0,0,0.2), 0px 25px 60px -10px rgba(0,0,0,0.3);  \r\n}\r\n\r\n.page{\r\n    padding: 15px;\r\n    margin: 15px;\r\n    max-width: 600px;\r\n    background-color: #fff;\r\n    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);\r\n    border-radius: 5px;    \r\n    color: #555\r\n}\r\n/*.page.input-data*/\r\ninput{\r\n    width: 140px;\r\n    border: solid 1px gray;\r\n    padding: 4px;\r\n}\r\n", ""]);
+exports.push([module.i, "/*app-root{\r\n    width: 50%;\r\n    max-width: 800px;\r\n    background-color:  #e6ffcc;\r\n}*/\r\n.title{\r\n    background-color: rgba(77,77,77,0.8);\r\n    color: #ccff99;\r\n    font-weight: 900;\r\n    max-width: 600px;\r\n    padding: 20px 40px;\r\n\r\n    border-radius: 10px;\r\n    box-shadow:  0px 0px 10px rgba(0,0,0,0.2), 0px 10px 20px -10px rgba(0,0,0,0.3);  \r\n}\r\n\r\n.page{\r\n    padding: 15px;\r\n    margin: 15px;\r\n    max-width: 600px;\r\n    background-color: #fff;\r\n    box-shadow: 0px 0px 10px rgba(0,0,0,0.3), 0px 25px 60px -10px rgba(0,0,0,0.3);\r\n    border-radius: 5px;    \r\n    color: #555;\r\n}\r\n\r\n.page.output{\r\n    -webkit-animation: ani1 1s 1;\r\n            animation: ani1 1s 1;\r\n    /*animation-timing-function: ease-in-out;*/\r\n    -webkit-transition-delay: 0.3s;\r\n            transition-delay: 0.3s;\r\n    /*position: relative;*/\r\n}\r\n\r\n@-webkit-keyframes ani1{\r\n    from {\r\n        background-color: lightgrey;\r\n    }\r\n    to {\r\n        background-color: white;\r\n    }\r\n}\r\n\r\n@keyframes ani1{\r\n    from {\r\n        background-color: lightgrey;\r\n    }\r\n    to {\r\n        background-color: white;\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n.input-data{\r\n    font-size: 20px;\r\n}\r\n\r\ninput{\r\n    width: 80px;\r\n    border: solid 1px gray;\r\n    padding: 5px;\r\n    margin: 5px;\r\n    text-align: center;\r\n    font-size: 20px;\r\n}\r\n\r\n.memo p{\r\n    font-size: 16px;\r\n}\r\n\r\n.output-data{\r\n    font-size: 30px;\r\n}\r\n\r\nbutton{\r\n    border: solid 1px #1a3300;\r\n    border-radius: 2px;\r\n    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);\r\n    background: #e6ffcc; /* For browsers that do not support gradients */\r\n\r\n    color: #1a3300;\r\n    background: rgba(#fff,0.9);\r\n    \r\n    width: 80px;\r\n    height: 40px;\r\n\r\n    margin: 10px;\r\n    padding: 6px;\r\n    cursor: pointer;\r\n\r\n    font-size: 20px;\r\n    font-weight: 900;\r\n    letter-spacing: 10px;\r\n    text-align: center;\r\n\r\n    -webkit-transition-duration: 0.3s;\r\n\r\n            transition-duration: 0.3s;\r\n}\r\n\r\nbutton:hover{\r\n    background:   #1a3300; /* For browsers that do not support gradients */\r\n    color: #e6ffcc;\r\n}", ""]);
 
 // exports
 
@@ -275,7 +277,7 @@ module.exports = module.exports.toString();
 /***/ 457:
 /***/ (function(module, exports) {
 
-module.exports = "<!--<div class=\"app-component\">-->\r\n  <h1 class=\"title\">\r\n    {{title}}\r\n  </h1>\r\n\r\n<div class=\"page\">\r\n  <div class = \"input-data\">\r\n    \r\n    請輸入資料：<br/>\r\n    狗狗目前 <input type=\"number\" placeholder=\"可以至小數點第一位\" min=0.9 max=22.6 [(ngModel)]=\"kg\" /> 公斤<br/>\r\n    \r\n    <span>狗狗生日</span>\r\n    西元 <input type=\"number\" min=1989 max=2017 [(ngModel)]=\"year\"/> 年\r\n    <input type=\"number\" min=\"1\" max=\"12\" [(ngModel)]=\"month\"/> 月\r\n    <input type=\"number\" min=\"1\" max=\"31\" [(ngModel)]=\"day\"/> 日\r\n    \r\n    <br/>  <br/>\r\n    您所輸入的資料如下<br/>\r\n    公斤數：{{kg}} <br/>\r\n    生日：{{year}}年{{month}}月{{day}}日<br/><br/>\r\n\r\n    確認無誤請送出資料\r\n    <button (click)=\"onClickSubmit()\" >送出</button>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf = \"clickMessage\" class=\"page\">\r\n\r\n  <div class=\"output-data\">\r\n    <br/>\r\n    {{clickMessage}}\r\n    <br/>\r\n    <br/>\r\n    <hr/>\r\n    <!--<br/>\r\n    狗狗生日{{birthday | date}}\r\n    目前每餐餵 {{spoonNum}} 湯匙<br/>\r\n    (一湯匙15ml)<br/>-->\r\n  </div>\r\n\r\n\r\n  <div class=\"memo\">\r\n    <br/>\r\n    公式：(公斤及歲數對應的數量(湯匙/oz)*8oz*30ml/4(餐))/15ml(一湯匙的量)\r\n    <br/>\r\n    <br/>\r\n    <hr/>\r\n  </div>\r\n  \r\n</div>  \r\n<!--</div>-->"
+module.exports = "<!--<div class=\"app-component\">-->\r\n  <h1 class=\"title\">\r\n    {{title}}\r\n  </h1>\r\n\r\n<div class=\"page\">\r\n  <div class = \"input-data\">\r\n    \r\n    請輸入資料：<br/><br/>\r\n    狗狗目前 <input type=\"number\" placeholder=\"幾\" min=0.9 max=22.6 [(ngModel)]=\"kg\" /> 公斤<br/>\r\n    \r\n    <span>狗狗生日</span>\r\n    西元 <input type=\"number\" min=1989 max=2017 [(ngModel)]=\"year\"/> 年\r\n    <input type=\"number\" min=\"1\" max=\"12\" [(ngModel)]=\"month\"/> 月\r\n    <input type=\"number\" min=\"1\" max=\"31\" [(ngModel)]=\"day\"/> 日<br/>\r\n    \r\n    <br/> <hr/> <br/>\r\n    您所輸入的資料如下<br/><br/>\r\n    公斤數：{{kg}} <br/>\r\n    生日：{{year}}年{{month}}月{{day}}日<br/>\r\n    確認無誤請送出資料\r\n    <button (click)=\"onClickSubmit()\" >送出</button>\r\n  </div>\r\n</div>\r\n\r\n<div *ngIf = \"clickMessage\" class=\"page output\">\r\n\r\n  <div class=\"output-data\">\r\n    <br/>\r\n    {{clickMessage}}\r\n    <br/>\r\n    <br/>\r\n    <hr/>\r\n    <!--<br/>\r\n    狗狗生日{{birthday | date}}\r\n    目前每餐餵 {{spoonNum}} 湯匙<br/>\r\n    (一湯匙15ml)<br/>-->\r\n  </div>\r\n\r\n\r\n  <div class=\"memo\">\r\n    <p>\r\n      公式：(一湯匙 15ml)<br/><br/>\r\n      (公斤及歲數對應的數量(湯匙/oz)*8oz*30ml/4(餐))/15ml(一湯匙的量)\r\n    </p>\r\n    <hr/>\r\n  </div>\r\n  \r\n</div>  \r\n<!--</div>-->"
 
 /***/ }),
 
