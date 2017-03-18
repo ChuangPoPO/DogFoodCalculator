@@ -11,7 +11,7 @@
     padding: 20px 40px;
 
     border-radius: 10px;
-    box-shadow:  0px 0px 10px rgba(0,0,0,0.2), 0px 25px 60px -10px rgba(0,0,0,0.3);  
+    box-shadow:  0px 0px 10px rgba(0,0,0,0.2), 0px 10px 20px -10px rgba(0,0,0,0.3);  
 }
 
 .page{
@@ -19,13 +19,76 @@
     margin: 15px;
     max-width: 600px;
     background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3), 0px 25px 60px -10px rgba(0,0,0,0.3);
     border-radius: 5px;    
-    color: #555
+    color: #555;
 }
-/*.page.input-data*/
+
+.page.output{
+    animation: ani1 1s 1;
+    /*animation-timing-function: ease-in-out;*/
+    transition-delay: 0.3s;
+    /*position: relative;*/
+}
+
+@keyframes ani1{
+    from {
+        background-color: lightgrey;
+    }
+    to {
+        background-color: white;
+    }
+}
+
+
+
+
+.input-data{
+    font-size: 20px;
+}
+
 input{
-    width: 140px;
+    width: 80px;
     border: solid 1px gray;
-    padding: 4px;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.memo p{
+    font-size: 16px;
+}
+
+.output-data{
+    font-size: 30px;
+}
+
+button{
+    border: solid 1px #1a3300;
+    border-radius: 2px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    background: #e6ffcc; /* For browsers that do not support gradients */
+
+    color: #1a3300;
+    background: rgba(#fff,0.9);
+    
+    width: 80px;
+    height: 40px;
+
+    margin: 10px;
+    padding: 6px;
+    cursor: pointer;
+
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    text-align: center;
+
+    transition-duration: 0.3s;
+}
+
+button:hover{
+    background:   #1a3300; /* For browsers that do not support gradients */
+    color: #e6ffcc;
 }
