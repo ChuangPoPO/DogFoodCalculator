@@ -9,36 +9,31 @@ import { FEEDS } from './dog-data-structure';
 
 
 export class AppComponent {
-  title = 'Dog Food Calculator';
+  title = '憨吉飼料計算機';
+ 
   kg:number;
   lb:number;
+ 
   year:number = 2017;
   month:number = 1;
   day:number = 3;
   today = new Date();
 
   clickMessage:string = '';
-  // todayYear = new Date().toISOString().slice(0,4).valueOf();//(0,10)
-  //birthday:TheDate = new TheDate();
 
   onClickSubmit():void {
-    // console.log(this.kg);    
+
      let bJDN:number = this.julianDayNumber(this.year, this.month, this.day);
      let tJDN:number = this.julianDayNumber(this.today.getFullYear(), (this.today.getMonth()+1) , this.today.getDate());
      
      let birthStage:number = this.whichBirthStage(bJDN, tJDN);
      
      this.lb = this.kg * 2.204623;
-     console.log("LB: " + this.lb);
 
      let weightStage:number = this.whichWeightStage(this.lb);
      let stage:number = 5 * birthStage + weightStage;
-
-     console.log("birthStage = " + birthStage);
-     console.log("weightStage = " + weightStage);
-
-     console.log("Stage = " + stage);
      
+
      if(birthStage < 3 && weightStage < 5){
        let spoonTotal:number = this.caculateSpoon(this.lb, stage);
        let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
@@ -46,12 +41,7 @@ export class AppComponent {
      }else{
        this.clickMessage = '您的狗狗不適用此飼料';
      }
-     
-    //  console.log("spoonTotal = " + spoonTotal);
-    //  console.log("Spoon = " + spoonNum);
-    //  console.log("bJDN : " + bJDN);
-    //  console.log("tJDN : " + tJDN);
-    //  console.log("Stage : " + birthStage);
+
   }
 
   private julianDayNumber(year:number, month:number, day:number): number {
@@ -100,12 +90,6 @@ export class AppComponent {
     let a2 = FEEDS[stage]["a2"];
     let a3 = FEEDS[stage]["a3"];
     let a4 = FEEDS[stage]["a4"];
-    
-    console.log("LB = " + lb);
-    console.log("a1 : " + a1);
-    console.log("a2 : " + a2);
-    console.log("a3 : " + a3);
-    console.log("a4 : " + a4);
 
     return a1 + (lb - a2) * a3 / a4;
   }
