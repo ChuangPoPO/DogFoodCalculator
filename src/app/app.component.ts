@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FEEDS } from './dog-data-structure';
 
+import * as AppUtils from './utils/app.utils';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,8 +25,8 @@ export class AppComponent {
 
   onClickSubmit():void {
 
-     let bJDN:number = this.julianDayNumber(this.year, this.month, this.day);
-     let tJDN:number = this.julianDayNumber(this.today.getFullYear(), (this.today.getMonth()+1) , this.today.getDate());
+     let bJDN:number = AppUtils.DatesUtils.julianDayNumber(this.year, this.month, this.day);
+     let tJDN:number = AppUtils.DatesUtils.julianDayNumber(this.today.getFullYear(), (this.today.getMonth()+1) , this.today.getDate());
      
      let birthStage:number = this.whichBirthStage(bJDN, tJDN);
      
@@ -44,14 +46,14 @@ export class AppComponent {
 
   }
 
-  private julianDayNumber(year:number, month:number, day:number): number {
-    year += 8000;
-    if(month < 3){
-      year--;
-      month+=12;
-    } 
-    return (year*365) + (year/4) - (year/100) + (year/400) - 1200820 + (month*153+3)/5 - 92 + day - 1 ;
-  }
+  // private julianDayNumber(year:number, month:number, day:number): number {
+  //   year += 8000;
+  //   if(month < 3){
+  //     year--;
+  //     month+=12;
+  //   } 
+  //   return (year*365) + (year/4) - (year/100) + (year/400) - 1200820 + (month*153+3)/5 - 92 + day - 1 ;
+  // }
 
   private whichBirthStage(bJDN:number, tJDN:number):number{
     let difDays:number = tJDN - bJDN;
