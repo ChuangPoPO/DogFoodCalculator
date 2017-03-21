@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
      if(birthStage < 3 && weightStage < 5){
        let spoonTotal:number = this.rawService.caculateSpoon(this.lb, stage);
        let spoonNum:number = spoonTotal * 8 * 30 / 4 / 15;
-       this.clickMessage = '每餐  '+ spoonNum.toPrecision(2) + '  湯匙';
+       this.clickMessage = '(一天四餐) 每餐  '+ spoonNum.toPrecision(2) + '  湯匙';
      }else{
        this.clickMessage = '您的狗狗不適用此飼料';
      }
