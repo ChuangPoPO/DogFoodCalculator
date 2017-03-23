@@ -7,11 +7,15 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { RawLessOneYearComponent } from './raw.less.one.year.component';
 
+import { RawLessoneyearService } from './raw.lessoneyear.service';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RawLessOneYearComponent
   ],
+
   imports: [
     BrowserModule,
     FormsModule,
@@ -23,7 +27,12 @@ import { RawLessOneYearComponent } from './raw.less.one.year.component';
       }
     ])
   ],
-  providers: [],
+
+  providers: [
+    RawLessoneyearService
+  ],
+
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
