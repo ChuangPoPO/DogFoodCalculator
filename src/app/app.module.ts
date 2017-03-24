@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { RawLessOneYearComponent } from './raw.less.one.year.component';
 import { KibbleSalmonMealComponent } from './kibble.salmon.meal.component';
-import { DashboardComponent } from './dashboard.component';
+import { HomeComponent } from './home.component';
 
 import { RawLessoneyearService } from './raw.lessoneyear.service';
 
@@ -18,7 +18,7 @@ import { RawLessoneyearService } from './raw.lessoneyear.service';
     AppComponent,
     RawLessOneYearComponent,
     KibbleSalmonMealComponent,
-    DashboardComponent
+    HomeComponent
   ],
 
   imports: [
@@ -28,7 +28,7 @@ import { RawLessoneyearService } from './raw.lessoneyear.service';
     RouterModule.forRoot([
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/home',
         pathMatch: 'full'
       },
       {
@@ -40,8 +40,8 @@ import { RawLessoneyearService } from './raw.lessoneyear.service';
         component: KibbleSalmonMealComponent
       },
       {
-        path: 'dashboard',
-        component: DashboardComponent
+        path: 'home',
+        component: HomeComponent
       }
     ])
   ],
