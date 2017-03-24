@@ -6,14 +6,19 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { RawLessOneYearComponent } from './raw.less.one.year.component';
+import { KibbleSalmonMealComponent } from './kibble.salmon.meal.component';
+import { DashboardComponent } from './dashboard.component';
 
 import { RawLessoneyearService } from './raw.lessoneyear.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RawLessOneYearComponent
+    RawLessOneYearComponent,
+    KibbleSalmonMealComponent,
+    DashboardComponent
   ],
 
   imports: [
@@ -22,8 +27,21 @@ import { RawLessoneyearService } from './raw.lessoneyear.service';
     HttpModule,
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+      },
+      {
         path: 'raw-less-one-year',
         component: RawLessOneYearComponent
+      },
+      {
+        path: 'kibble-salmon-meal',
+        component: KibbleSalmonMealComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
       }
     ])
   ],
