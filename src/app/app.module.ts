@@ -11,39 +11,23 @@ import { HomeComponent } from './home/home.component';
 
 import { RawLessOneYearService } from './shared/services/raw-less-one-year.service';
 
+import { AppRoutingModule } from './app-routing.module';
+
 
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
+  ],
+
   declarations: [
     AppComponent,
     RawLessOneYearComponent,
     KibbleSalmonMealComponent,
     HomeComponent
-  ],
-
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'raw-less-one-year',
-        component: RawLessOneYearComponent
-      },
-      {
-        path: 'kibble-salmon-meal',
-        component: KibbleSalmonMealComponent
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      }
-    ])
   ],
 
   providers: [
