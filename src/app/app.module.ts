@@ -5,11 +5,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RawLessOneYearComponent } from './raw-less-one-year/raw-less-one-year.component';
-import { KibbleSalmonMealComponent } from './kibble-salmon-meal/kibble-salmon-meal.component';
+import { PuppyComponent } from './puppy/puppy.component';
+import { AdultNormalComponent } from './adult-normal/adult-normal.component';
 import { HomeComponent } from './home/home.component';
 
-import { RawLessOneYearService } from './shared/services/raw-less-one-year.service';
+import { PuppyService } from './shared/services/puppy.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -25,13 +25,13 @@ import { AppRoutingModule } from './app-routing.module';
 
   declarations: [
     AppComponent,
-    RawLessOneYearComponent,
-    KibbleSalmonMealComponent,
+    PuppyComponent,
+    AdultNormalComponent,
     HomeComponent
   ],
 
   providers: [
-    RawLessOneYearService
+    PuppyService
   ],
 
   bootstrap: [AppComponent]
