@@ -1,0 +1,29 @@
+  <h1 class="title">
+    {{title}}
+  </h1>
+
+<div class="page">
+  <div class = "input-data">
+    
+    請輸入資料：<br/>
+    狗狗目前 <input type="number" placeholder="幾" min=0.9 max=22.6 [(ngModel)]="kg" /> 公斤<br/>
+    
+    <span>狗狗生日</span>
+    西元 <input type="number" min=1989 max=2017 [(ngModel)]="year"/> 年
+    <input type="number" min="1" max="12" [(ngModel)]="month"/> 月
+    <input type="number" min="1" max="31" [(ngModel)]="day"/> 日<br/>
+    
+    確認無誤請送出資料
+    <button (click)="onClickSubmit()" >送出</button>
+  </div>
+
+    <div *ngIf = "clickMessage" >
+
+      <div class="output-data">
+        <hr/>
+        {{clickMessage}}
+        <br/>
+      </div>
+
+    </div>
+</div>

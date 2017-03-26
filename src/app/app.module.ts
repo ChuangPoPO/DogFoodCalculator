@@ -5,11 +5,11 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RawLessOneYearComponent } from './raw.less.one.year.component';
-import { KibbleSalmonMealComponent } from './kibble.salmon.meal.component';
-import { HomeComponent } from './home.component';
+import { RawLessOneYearComponent } from './raw-less-one-year/raw-less-one-year.component';
+import { KibbleSalmonMealComponent } from './kibble-salmon-meal/kibble-salmon-meal.component';
+import { HomeComponent } from './home/home.component';
 
-import { RawLessoneyearService } from './raw.lessoneyear.service';
+import { RawLessOneYearService } from './shared/services/raw-less-one-year.service';
 
 
 
@@ -47,7 +47,7 @@ import { RawLessoneyearService } from './raw.lessoneyear.service';
   ],
 
   providers: [
-    RawLessoneyearService
+    RawLessOneYearService
   ],
 
   bootstrap: [AppComponent]
