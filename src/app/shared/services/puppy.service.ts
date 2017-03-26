@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {FEEDS} from './dog-data-structure';
+import {FEEDS} from '../models/dog-data-structure';
 
 @Injectable()
 
-export class RawLessoneyearService {
+export class PuppyService {
 
     whichBirthStage(bJDN:number, tJDN:number):number{
     let difDays:number = tJDN - bJDN;
@@ -48,5 +48,3 @@ export class RawLessoneyearService {
   }
 
 }
-
-  
